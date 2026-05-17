@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════
+   LEXGUARD — ADVERSARIAL INTELLIGENCE UI
+   ═══════════════════════════════════════ */
+
+:root {
+  --bg-void:      #050709;
+  --bg-primary:   #080C14;
+  --bg-secondary: #0D1320;
+  --bg-panel:     #0F1828;
+  --bg-surface:   #141C2E;
+  --bg-elevated:  #1B2438;
+
+  --gold:         #C9A84C;
+  --gold-bright:  #E8C96A;
+  --gold-dim:     rgba(201,168,76,0.4);
+  --gold-glow:    rgba(201,168,76,0.15);
+
+  --danger:   #E63946;
+  --warning:  #FF6B35;
+  --caution:  #FF9F1C;
+  --safe:     #2DC653;
+  --teal:     #00B4A2;
+  --info:     #4361EE;
+
+  --text-primary:   #E8EBF2;
+  --text-secondary: #8B9BB4;
+  --text-muted:     #4A5878;
+  --text-gold:      #C9A84C;
+
+  --border-gold:  rgba(201,168,76,0.18);
+  --border-muted: rgba(255,255,255,0.06);
+  --border-panel: rgba(255,255,255,0.04);
+
+  --sidebar-w: 60px;
+  --nav-h:     48px;
+}
+
+/* ── Base ─────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 14px; height: 100%; }
+body {
+  background: var(--bg-void);
+  color: var(--text-primary);
+  font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ── Typography utilities ─────────────── */
+.lx-mono {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+}
+.lx-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.gradient-text {
+  background: linear-gradient(135deg, #C9A84C 0%, #E8C96A 50%, #C9A84C 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Sidebar ──────────────────────────── */
+.lx-sidebar {
+  width: var(--sidebar-w);
+  background: var(--bg-primary);
+  border-right: 1px solid var(--border-muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  z-index: 40;
+}
+.lx-sidebar-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  color: var(--text-muted);
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.lx-sidebar-icon:hover {
+  color: var(--text-secondary);
+  background: rgba(255,255,255,0.05);
+}
+.lx-sidebar-icon.active {
+  color: var(--gold);
+  background: var(--gold-glow);
+  border-color: var(--border-gold);
+}
+
+/* ── Navigation ───────────────────────── */
+.lx-nav {
+  height: var(--nav-h);
+  border-bottom: 1px solid var(--border-muted);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  background: var(--bg-primary);
+  flex-shrink: 0;
+  gap: 0;
+}
+.lx-nav-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 0 16px;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s;
+  cursor: pointer;
+}
+.lx-nav-link:hover { color: var(--text-secondary); }
+.lx-nav-link.active {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
+/* ── Panels ───────────────────────────── */
+.glass {
+  background: rgba(13,19,32,0.85);
+  border: 1px solid var(--border-muted);
+  backdrop-filter: blur(12px);
+}
+.lx-panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-panel);
+}
+.lx-surface {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-muted);
+}
+.lx-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-muted);
+  border-radius: 6px;
+  transition: border-color 0.15s;
+}
+.lx-card:hover { border-color: rgba(255,255,255,0.1); }
+
+/* ── Risk badges ──────────────────────── */
+.risk-CRITICAL {
+  color: var(--danger);
+  background: rgba(230,57,70,0.1);
+  border: 1px solid rgba(230,57,70,0.3);
+}
+.risk-HIGH {
+  color: var(--warning);
+  background: rgba(255,107,53,0.1);
+  border: 1px solid rgba(255,107,53,0.3);
+}
+.risk-MEDIUM {
+  color: var(--caution);
+  background: rgba(255,159,28,0.1);
+  border: 1px solid rgba(255,159,28,0.3);
+}
+.risk-LOW {
+  color: #FFD166;
+  background: rgba(255,209,102,0.08);
+  border: 1px solid rgba(255,209,102,0.2);
+}
+.risk-SAFE {
+  color: var(--safe);
+  background: rgba(45,198,83,0.08);
+  border: 1px solid rgba(45,198,83,0.2);
+}
+
+/* ── Scrollbar ────────────────────────── */
+::-webkit-scrollbar { width: 3px; height: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(201,168,76,0.2);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(201,168,76,0.4); }
+
+/* ── Animations ───────────────────────── */
+@keyframes pulse-danger {
+  0%,100% { box-shadow: 0 0 0 0 rgba(230,57,70,0.25); }
+  50%      { box-shadow: 0 0 0 5px rgba(230,57,70,0); }
+}
+@keyframes scan {
+  0%   { transform: translateY(-100%); opacity: 0; }
+  10%  { opacity: 0.6; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+@keyframes blink {
+  0%,100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+@keyframes float-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes glow-pulse {
+  0%,100% { opacity: 0.4; }
+  50%      { opacity: 0.8; }
+}
+
+.pulse-danger { animation: pulse-danger 2s ease-in-out infinite; }
+.blink-cursor::after {
+  content: '▋';
+  animation: blink 1.2s step-end infinite;
+  color: var(--gold);
+}
+
+/* ── Utility ──────────────────────────── */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.line-clamp-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.lx-divider {
+  height: 1px;
+  background: var(--border-muted);
+}
+
+/* ── Mobile ───────────────────────────── */
+@media (max-width: 768px) {
+  .lx-sidebar { display: none; }
+  body { overflow: auto; }
+}
