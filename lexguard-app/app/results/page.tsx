@@ -242,7 +242,7 @@ export default function ResultsPage() {
         </div>
 
         {/* CENTER: Clause Detail */}
-        <div className="lg:col-span-5 space-y-4 lg:max-h-[calc(100vh-130px)] lg:overflow-y-auto lg:pr-1">
+        <div style={{ overflowY:'auto', padding:'16px 20px', display:'flex', flexDirection:'column', gap:16, borderRight:'1px solid rgba(255,255,255,0.04)' }}>
           <AnimatePresence mode="wait">
             {selectedClause ? (
               <motion.div
@@ -438,7 +438,7 @@ export default function ResultsPage() {
         </div>
 
         {/* RIGHT: Trust Score + Power Imbalance */}
-        <div className="lg:col-span-3 space-y-4">
+        <div style={{ overflowY:'auto', padding:'16px 12px', display:'flex', flexDirection:'column', gap:16 }}>
           {/* Trust Score */}
           <motion.div
             className="glass rounded-2xl p-5"

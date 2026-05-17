@@ -160,8 +160,10 @@ export default function HomePage() {
                   </div>
                 )}
                 <div style={{ display:'flex', gap:12, marginBottom:12 }}>
-                  <button onClick={() => setActiveTab('paste')} className="lx-label" style={{ color: activeTab==='paste' ? 'var(--gold)' : 'var(--text-muted)', borderBottom: activeTab==='paste' ? '1px solid var(--gold)' : '1px solid transparent', paddingBottom:4, background:'none', cursor:'pointer', border:'none' }}>Paste / Upload</button>
-                  <button onClick={() => setActiveTab('demo')} className="lx-label" style={{ color: activeTab==='demo' ? '#E63946' : 'var(--text-muted)', borderBottom: activeTab==='demo' ? '1px solid #E63946' : '1px solid transparent', paddingBottom:4, background:'none', cursor:'pointer', border:'none' }}>Threat Scenarios</button>
+                  <button onClick={() => setActiveTab('paste')} className="lx-label"
+                    style={{ border:'none', borderBottom: activeTab==='paste' ? '1px solid var(--gold)' : '1px solid transparent', color: activeTab==='paste' ? 'var(--gold)' : 'var(--text-muted)', paddingBottom:6, paddingTop:2, background:'none', cursor:'pointer', transition:'all 0.15s' }}>Paste / Upload</button>
+                  <button onClick={() => setActiveTab('demo')} className="lx-label"
+                    style={{ border:'none', borderBottom: activeTab==='demo' ? '1px solid #E63946' : '1px solid transparent', color: activeTab==='demo' ? '#E63946' : 'var(--text-muted)', paddingBottom:6, paddingTop:2, background:'none', cursor:'pointer', transition:'all 0.15s' }}>Threat Scenarios</button>
                 </div>
 
                 {activeTab === 'paste' ? (
