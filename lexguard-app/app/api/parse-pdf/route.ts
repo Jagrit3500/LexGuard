@@ -59,7 +59,8 @@ export async function POST(request: NextRequest) {
       const arrayBuffer = await file.arrayBuffer();
       const buffer = Buffer.from(arrayBuffer);
 
-      // pdf-parse uses CommonJS exports — use require to avoid ESM type issues
+      // pdf-parse is in serverExternalPackages — Node.js loads it natively,
+      // which avoids the DOMMatrix browser-API error.
       // eslint-disable-next-line @typescript-eslint/no-require-imports
       const pdfParse = require('pdf-parse') as (buf: Buffer) => Promise<{ text: string; numpages: number }>;
       const pdfData = await pdfParse(buffer);

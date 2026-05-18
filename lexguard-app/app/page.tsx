@@ -152,7 +152,15 @@ export default function HomePage() {
                 onDragOver={e => { e.preventDefault(); setIsDragging(true); }}
                 onDragLeave={() => setIsDragging(false)}
                 onDrop={handleDrop}
-                style={{ border:`1px solid ${isDragging ? 'rgba(201,168,76,0.5)' : 'rgba(255,255,255,0.07)'}`, borderRadius:6, background: isDragging ? 'rgba(201,168,76,0.04)' : 'rgba(255,255,255,0.015)', padding:'16px 20px', transition:'all 0.2s', position:'relative' }}
+                style={{
+                  border: `1px solid ${isDragging ? 'rgba(201,168,76,0.5)' : 'rgba(255,255,255,0.07)'}`,
+                  borderRadius: 8,
+                  background: isDragging ? 'rgba(201,168,76,0.04)' : 'var(--bg-surface)',
+                  padding: '20px 24px',
+                  transition: 'all 0.2s',
+                  position: 'relative',
+                  boxShadow: isDragging ? '0 0 0 3px rgba(201,168,76,0.15)' : 'none'
+                }}
               >
                 {isParsing && (
                   <div style={{ position:'absolute', inset:0, background:'rgba(8,12,20,0.85)', display:'flex', alignItems:'center', justifyContent:'center', borderRadius:6, zIndex:10 }}>
@@ -223,7 +231,7 @@ export default function HomePage() {
               )}
 
               <button onClick={() => handleAnalyze()} disabled={isAnalyzing || isParsing || !contractText.trim()}
-                style={{ padding:'14px 0', background: contractText.trim() ? 'linear-gradient(135deg,#B8860B,#C9A84C)' : 'rgba(255,255,255,0.05)', border:'none', borderRadius:5, color: contractText.trim() ? '#000' : 'var(--text-muted)', fontWeight:700, fontSize:11, letterSpacing:'0.15em', textTransform:'uppercase', cursor: contractText.trim() ? 'pointer' : 'not-allowed', transition:'all 0.2s', fontFamily:'JetBrains Mono,monospace' }}>
+                className="lx-deploy-btn">
                 {isAnalyzing ? '⊙ Deploying Agents...' : '→ Deploy AI Defense'}
               </button>
 
@@ -239,10 +247,18 @@ export default function HomePage() {
             <div style={{ display:'flex', gap:10, flexWrap:'wrap' }}>
               {PERSONAS.map(p => (
                 <button key={p.value} onClick={() => setPersona(p.value)}
-                  style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:8, padding:'14px 16px', background: persona===p.value ? 'rgba(201,168,76,0.08)' : 'rgba(255,255,255,0.02)', border: persona===p.value ? '1px solid rgba(201,168,76,0.4)' : '1px solid rgba(255,255,255,0.06)', borderRadius:6, cursor:'pointer', transition:'all 0.15s', minWidth:90 }}>
-                  <span style={{ fontSize:24 }}>{p.icon}</span>
-                  <span className="lx-label" style={{ color: persona===p.value ? 'var(--gold)' : 'var(--text-muted)' }}>{p.label}</span>
-                  {persona===p.value && <span className="lx-label" style={{ color:'var(--gold)', fontSize:8 }}>ACTIVE ◆</span>}
+                  style={{
+                    display: 'flex', flexDirection: 'column', alignItems: 'center',
+                    gap: 10, padding: '18px 16px',
+                    background: persona===p.value ? 'rgba(201,168,76,0.1)' : 'var(--bg-surface)',
+                    border: persona===p.value ? '1px solid rgba(201,168,76,0.45)' : '1px solid var(--border-muted)',
+                    borderRadius: 8, cursor: 'pointer', transition: 'all 0.18s',
+                    minWidth: 100, flex: 1,
+                    boxShadow: persona===p.value ? '0 0 20px rgba(201,168,76,0.1)' : 'none'
+                  }}>
+                  <span style={{ fontSize: 28 }}>{p.icon}</span>
+                  <span className="lx-label" style={{ color: persona===p.value ? 'var(--gold)' : 'var(--text-muted)', letterSpacing:'0.1em' }}>{p.label}</span>
+                  {persona===p.value && <span style={{ width:20, height:2, background:'var(--gold)', borderRadius:1, display:'block' }} />}
                 </button>
               ))}
             </div>
